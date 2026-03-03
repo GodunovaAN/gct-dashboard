@@ -7,6 +7,10 @@ services:
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /api/session
+     disks:
+      - name: gct-data
+        mountPath: /var/data
+        sizeGB: 1
     envVars:
       - key: NODE_VERSION
         value: 20
@@ -30,7 +34,4 @@ services:
         sync: false
       - key: LINKEDIN_CLIENT_SECRET
         sync: false
-    disks:
-      - name: gct-data
-        mountPath: /var/data
-        sizeGB: 1
+   
