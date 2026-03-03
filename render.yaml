@@ -5,7 +5,7 @@ services:
     plan: starter
     autoDeploy: true
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: plan: free
     healthCheckPath: /api/session
     envVars:
       - key: NODE_VERSION
