@@ -9,7 +9,7 @@ services:
     healthCheckPath: /api/session
 
     disk:
-      - name: gct-data
+        name: gct-data
         mountPath: /var/data
         sizeGB: 1
 
