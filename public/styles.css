@@ -1,0 +1,392 @@
+:root {
+  --bg: #f2f5f9;
+  --paper: #ffffff;
+  --ink: #1e2a36;
+  --muted: #5d6a78;
+  --line: #d5dde7;
+  --accent: #0050b3;
+  --accent-soft: #e7f0ff;
+  --danger: #ab2d2d;
+  --ok: #0a7a46;
+  --shadow: 0 18px 40px rgba(23, 45, 70, 0.11);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 90% 5%, rgba(0, 80, 179, 0.17), transparent 32%),
+    radial-gradient(circle at 0% 70%, rgba(8, 108, 79, 0.1), transparent 35%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(transparent 95%, rgba(255, 255, 255, 0.6) 96%);
+  background-size: 100% 26px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.layout {
+  width: min(1240px, calc(100% - 28px));
+  margin-inline: auto;
+  padding: 24px 0 30px;
+}
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.auth-panel {
+  padding: 26px;
+  display: grid;
+  gap: 18px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+h1 {
+  font-size: clamp(26px, 4.8vw, 44px);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 19px;
+}
+
+.kicker {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.lead {
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+.lead.compact {
+  margin-top: 8px;
+}
+
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: "IBM Plex Sans", sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+}
+
+.btn-light {
+  background: #f7f9fd;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.btn-dark {
+  background: #21354a;
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.inline-form {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"] {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 15px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--muted);
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.topbar {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 14px;
+}
+
+.document-panel,
+.sidebar {
+  padding: 18px;
+}
+
+.legal-text {
+  color: #314357;
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 12px 0 14px;
+}
+
+.doc-frame-wrap {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  height: min(70vh, 780px);
+  background: #f7fafc;
+}
+
+#docFrame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.sign-form {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #30475f;
+}
+
+.signed-box {
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 1px solid #b7e5c8;
+  background: #ecfdf2;
+  padding: 12px;
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.stats {
+  margin: 10px 0 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.stats div {
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfdff;
+}
+
+.stats strong {
+  display: block;
+  font-size: 25px;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.stats span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.upload-form {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.signature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  max-height: 72vh;
+  overflow: auto;
+}
+
+.signature-item {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+  background: #fff;
+}
+
+.signature-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.signature-name {
+  font-weight: 700;
+}
+
+.badge {
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 4px 8px;
+  font-weight: 700;
+}
+
+.badge.support {
+  background: #e9f9ef;
+  color: #106d41;
+}
+
+.badge.oppose {
+  background: #ffefef;
+  color: var(--danger);
+}
+
+.signature-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.signature-admin {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signature-admin button {
+  border: 1px solid #ebc7c7;
+  color: var(--danger);
+  background: #fff;
+  border-radius: 8px;
+  min-height: 32px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.notice {
+  border: none;
+  border-radius: 14px;
+  max-width: 460px;
+  width: calc(100% - 28px);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.notice::backdrop {
+  background: rgba(12, 21, 34, 0.42);
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-frame-wrap {
+    height: min(56vh, 620px);
+  }
+}
+
+@media (max-width: 680px) {
+  .layout {
+    width: calc(100% - 16px);
+    padding-top: 12px;
+  }
+
+  .auth-panel,
+  .topbar,
+  .document-panel,
+  .sidebar {
+    padding: 14px;
+  }
+
+  .topbar {
+    flex-direction: column;
+  }
+
+  .auth-actions {
+    flex-direction: column;
+  }
+}

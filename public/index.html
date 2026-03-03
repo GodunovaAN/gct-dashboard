@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Підписання документа</title>
+    <meta
+      name="description"
+      content="Онлайн-підписання документа представниками організацій із публічним переліком підписантів у реальному часі."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+
+    <main class="layout">
+      <section id="authView" class="panel auth-panel">
+        <div>
+          <p class="kicker">Підписання документа</p>
+          <h1>Увійдіть, щоб ознайомитися з документом і підтвердити позицію організації</h1>
+          <p class="lead">
+            Для участі авторизуйтеся одним зі способів нижче. Один акаунт може
+            зафіксувати позицію лише один раз.
+          </p>
+        </div>
+
+        <div class="auth-actions">
+          <a class="btn btn-light" href="/auth/google">Увійти через Google</a>
+          <a class="btn btn-light" href="/auth/linkedin">Увійти через LinkedIn</a>
+          <a class="btn btn-outline" href="/dashboard.html">Відкрити GCT Dashboard</a>
+        </div>
+
+        <div class="email-box">
+          <h2>Вхід через email</h2>
+          <form id="emailStartForm" class="inline-form">
+            <label for="emailInput">Email</label>
+            <input id="emailInput" name="email" type="email" required placeholder="name@company.org" />
+            <button class="btn btn-dark" type="submit">Надіслати код</button>
+          </form>
+          <form id="emailVerifyForm" class="inline-form hidden">
+            <label for="codeInput">Код підтвердження</label>
+            <input id="codeInput" name="code" type="text" inputmode="numeric" maxlength="6" required />
+            <button class="btn btn-dark" type="submit">Підтвердити</button>
+          </form>
+          <p id="emailHint" class="muted"></p>
+        </div>
+      </section>
+
+      <section id="appView" class="app hidden">
+        <header class="topbar panel">
+          <div>
+            <p class="kicker">Петиційний режим</p>
+            <h2>Публічне погодження документа</h2>
+            <p class="lead compact">
+              Юридичне підтвердження позиції здійснюється шляхом зазначення організації,
+              яку ви представляєте.
+            </p>
+          </div>
+          <div class="topbar-actions">
+            <button id="logoutBtn" class="btn btn-outline" type="button">Вийти</button>
+          </div>
+        </header>
+
+        <div class="grid">
+          <section class="panel document-panel">
+            <h3>Документ для ознайомлення</h3>
+            <p class="legal-text">
+              Якщо ви підтримуєте положення документа, вкажіть повну назву організації,
+              яку офіційно представляєте, та натисніть «Погоджуюся». Надсилання форми
+              означає підтвердження, що ви маєте належні повноваження діяти від імені цієї
+              організації.
+            </p>
+
+            <div class="doc-frame-wrap">
+              <iframe id="docFrame" title="Документ" src="/document.pdf"></iframe>
+            </div>
+
+            <form id="signForm" class="sign-form">
+              <h4>Підтвердження позиції</h4>
+              <div class="radio-row">
+                <label><input type="radio" name="stance" value="support" checked /> Підтримую</label>
+                <label><input type="radio" name="stance" value="oppose" /> Не підтримую</label>
+              </div>
+
+              <label for="orgInput">Назва організації</label>
+              <input
+                id="orgInput"
+                name="organization"
+                type="text"
+                minlength="2"
+                maxlength="160"
+                required
+                placeholder="Наприклад: ГО «Спільна дія»"
+              />
+              <button id="signBtn" class="btn btn-accent" type="submit">Погоджуюся</button>
+            </form>
+
+            <div id="signedMessage" class="signed-box hidden"></div>
+          </section>
+
+          <aside class="panel sidebar">
+            <h3>Підписанти (організації)</h3>
+            <div class="stats">
+              <div>
+                <strong id="supportCount">0</strong>
+                <span>Підтримують</span>
+              </div>
+              <div>
+                <strong id="opposeCount">0</strong>
+                <span>Не підтримують</span>
+              </div>
+            </div>
+
+            <form id="uploadForm" class="upload-form hidden" enctype="multipart/form-data">
+              <label for="docUpload">Оновити PDF (лише адміністратор)</label>
+              <input id="docUpload" type="file" name="document" accept="application/pdf" />
+              <button class="btn btn-outline" type="submit">Завантажити</button>
+            </form>
+
+            <ul id="signaturesList" class="signature-list"></ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="noticeDialog" class="notice">
+      <p id="noticeText"></p>
+      <form method="dialog">
+        <button class="btn btn-dark" type="submit">Добре</button>
+      </form>
+    </dialog>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

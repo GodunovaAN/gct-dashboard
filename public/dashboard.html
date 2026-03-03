@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GCT Workshop Dashboard</title>
+    <meta
+      name="description"
+      content="Інтерактивний дашборд за реєстраційною формою воркшопу з Group Cash Transfers."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dashboard.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
+
+    <main class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Workshop Analytics</p>
+          <h1>Group Cash Transfers Dashboard</h1>
+          <p id="datasetMeta" class="subtle">Завантаження даних...</p>
+        </div>
+        <a class="home-link" href="/">До головної сторінки</a>
+      </header>
+
+      <section class="panel filters">
+        <label>
+          Пошук організації
+          <input id="searchInput" type="search" placeholder="Введіть назву організації" />
+        </label>
+        <label>
+          Статус впровадження GCT
+          <select id="statusFilter">
+            <option value="all">Усі</option>
+            <option value="current">Наразі впроваджує</option>
+            <option value="previous">Впроваджувала раніше</option>
+            <option value="planned">Планує впровадження</option>
+            <option value="none">Без досвіду</option>
+          </select>
+        </label>
+        <label>
+          Тип організації
+          <select id="orgTypeFilter">
+            <option value="all">Усі типи</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="kpis">
+        <article class="kpi panel">
+          <p>Організації</p>
+          <strong id="kpiOrgCount">0</strong>
+        </article>
+        <article class="kpi panel">
+          <p>Запропоновані учасники</p>
+          <strong id="kpiParticipants">0</strong>
+        </article>
+        <article class="kpi panel">
+          <p>Впроваджують зараз</p>
+          <strong id="kpiCurrent">0</strong>
+        </article>
+        <article class="kpi panel">
+          <p>Планують впровадження</p>
+          <strong id="kpiPlanned">0</strong>
+        </article>
+      </section>
+
+      <section class="visuals">
+        <article class="panel chart">
+          <h2>Типи організацій</h2>
+          <div id="orgTypeChart" class="donut-wrap"></div>
+        </article>
+        <article class="panel chart">
+          <h2>Роль у GCT</h2>
+          <div id="roleChart" class="donut-wrap"></div>
+        </article>
+        <article class="panel chart wide">
+          <h2>Географія діяльності (топ-12 регіонів)</h2>
+          <div id="regionsChart" class="bars"></div>
+        </article>
+        <article class="panel chart wide">
+          <h2>Потрібна підтримка</h2>
+          <div id="supportChart" class="bars"></div>
+        </article>
+        <article class="panel chart wide">
+          <h2>Пріоритети воркшопу</h2>
+          <div id="topicsChart" class="bars"></div>
+        </article>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="table-head">
+          <h2>Організації та ключові дані</h2>
+          <p id="tableMeta">0 рядків</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Організація</th>
+                <th>Тип</th>
+                <th>Роль</th>
+                <th>Статус GCT</th>
+                <th>Мова</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="/dashboard.js"></script>
+  </body>
+</html>

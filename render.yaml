@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: gct-signature-dashboard
+    runtime: node
+    plan: starter
+    autoDeploy: true
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/session
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: APP_BASE_URL
+        sync: false
+      - key: ADMIN_EMAILS
+        sync: false
+      - key: DATA_DIR
+        value: /var/data
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: LINKEDIN_CLIENT_ID
+        sync: false
+      - key: LINKEDIN_CLIENT_SECRET
+        sync: false
+    disks:
+      - name: gct-data
+        mountPath: /var/data
+        sizeGB: 1
