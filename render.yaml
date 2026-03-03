@@ -19,7 +19,7 @@ services:
         value: "true"
 
       - key: DATA_DIR
-        value: /var/data
+        value: ./data
 
       - key: APP_BASE_URL
         sync: false
