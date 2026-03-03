@@ -8,7 +8,7 @@ services:
     startCommand: npm start
     healthCheckPath: /api/session
 
-    disks:
+    disk:
       - name: gct-data
         mountPath: /var/data
         sizeGB: 1
