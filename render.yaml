@@ -2,10 +2,10 @@ services:
   - type: web
     name: gct-signature-dashboard
     runtime: node
-    plan: starter
+    plan: free 
     autoDeploy: true
     buildCommand: npm install
-    startCommand: plan: free
+    startCommand: npm start
     healthCheckPath: /api/session
     envVars:
       - key: NODE_VERSION
