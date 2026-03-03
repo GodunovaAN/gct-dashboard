@@ -29,22 +29,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# Env
-.env
-.env.local
-.env.*.local
-
-# Runtime / local data
-/data/
-output/
-tmp/
-*.sqlite
-*.sqlite3
-
-# Python (если случайно есть)
-.venv/
-__pycache__/
-
-# macOS
-.DS_Store
